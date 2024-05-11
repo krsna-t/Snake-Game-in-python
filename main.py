@@ -42,15 +42,21 @@ while game_is_on:
 
     #detect colllision with wall
     if (snake.segment[0].xcor() > 286 or snake.segment[0].xcor() < -286 or snake.segment[0].ycor() > 286 or snake.segment[0].ycor() < -286):
-       game_is_on = False
-       scoreboard.game_over()
+       scoreboard.reset()
+       snake.reset_snake()
 
-    #detect collision with snake's tail 
-    for segment in snake.segment:
-        if segment == snake.segment[0]:
-            pass
-        elif snake.segment[0].distance(segment)<10:
-            game_is_on= False
-            scoreboard.game_over()
+    #detect colllision with pooch of the snake 
+    # for segment in snake.segment:
+    #     if segment == snake.segment[0]:
+    #         pass
+    #     elif snake.segment[0].distance(segment)<10:
+    #         game_is_on= False
+    #         scoreboard.game_over()
+    
 
-screen.exitonclick()
+
+    #slicing of list
+    for segment in snake.segment[1:]:
+        if snake.segment[0].distance(segment)<10:
+            scoreboard.reset()
+            snake.reset_snake()
