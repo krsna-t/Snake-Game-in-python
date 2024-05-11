@@ -54,6 +54,13 @@ class Snake:
             self.segment[0].setheading(RIGHT)
 
 
+    def reset_snake(self):
+        for seg in self.segment:
+            seg.goto(1000,1000)
+        self.segment.clear()
+        self.create_snake()        
+
+
   # time.sleep(0.99)
     # for seg in segment:
     #     seg.forward(20)
